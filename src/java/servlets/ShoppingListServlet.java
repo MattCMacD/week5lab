@@ -53,7 +53,7 @@ public class ShoppingListServlet extends HttpServlet {
             if (username != null && !username.equals("")) {
                 HttpSession mysession = request.getSession();
                 mysession.setAttribute("userObject", username);
-                
+
                 response.sendRedirect("ShoppingList");
             } else {
                 request.setAttribute("message", "Please enter a name to use");
@@ -64,32 +64,29 @@ public class ShoppingListServlet extends HttpServlet {
             if (newitem != null && !newitem.equals("")) {
 
                 HttpSession mysession = request.getSession();
-                ArrayList <String> itemList = (ArrayList<String>) mysession.getAttribute("array");
+                ArrayList<String> itemList = (ArrayList<String>) mysession.getAttribute("array");
                 itemList.add(newitem);
                 mysession.setAttribute("array", itemList);
-                
+
                 response.sendRedirect("ShoppingList");
             }
-        }
-
-        else if (request.getParameter("action") != null && request.getParameter("action").equals("delete")) {
+        } else if (request.getParameter("action") != null && request.getParameter("action").equals("delete")) {
             String deletethis = (String) request.getParameter("delete");
-           
 
-                HttpSession mysession = request.getSession();
-                ArrayList <String> itemList = (ArrayList<String>) mysession.getAttribute("array");
-                
-                for (int i = 0; i<itemList.size();i++){
-                if(deletethis.equals(itemList.get(i))){
+            HttpSession mysession = request.getSession();
+            ArrayList<String> itemList = (ArrayList<String>) mysession.getAttribute("array");
+
+            for (int i = 0; i < itemList.size(); i++) {
+                if (deletethis.equals(itemList.get(i))) {
                     itemList.remove(i);
                     i--;
                 }
-                
-                }
-                mysession.setAttribute("array", itemList);
-                
-                response.sendRedirect("ShoppingList");
+
+            }
+            mysession.setAttribute("array", itemList);
+
+            response.sendRedirect("ShoppingList");
         }
-        
+
     }
 }

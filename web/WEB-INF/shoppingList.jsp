@@ -21,16 +21,16 @@
             Add item <input type="textfield" name="additem"> <input type="hidden" name="action" value="add"> <input type="submit" value="Add"><br>
         </form>
         <form action="ShoppingList" method="post">
-        <table>
-            <c:forEach items="${items}" var="item">
-                <tr>
-                    <td><input type="radio" name="delete" value="${item}"></td>
-                    <td>${item}</td>
-                </tr>
-            </c:forEach>
-        </table>
+            <table>
+                <c:forEach items="${items}" var="item">
+                    <tr>
+                        <td><input type="radio" name="delete" value="${item}"></td>
+                        <td>${item}</td>
+                    </tr>
+                </c:forEach>
+            </table>
             <input type="hidden" name="action" value="delete">
-        <input type="submit" name="deleteUserFN" value="Delete">
+            <input type="submit" name="deleteUserFN" value="Delete">
         </form>
     </body>
 </html>
